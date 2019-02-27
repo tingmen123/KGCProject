@@ -1,0 +1,144 @@
+*{
+	margin: 0px auto;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+	
+}
+/*头*/
+.one{
+	float: left;
+	width: 98%;
+	height: 150px;
+	border: solid #01AAED 1px;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	/*背景图片*/
+	background-image: url("/img/img-4.jpg");
+	background-color: beige;
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
+}
+/*中间内容*/
+.two{
+	float: left;
+	width: 98%;
+	height: 700px;
+	border: solid red 1px;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	background-image: url("../img/2.jpg");
+	background-size:100% 100%;
+	 -moz-background-size:100% 100%;
+}
+/*尾部*/
+.three{
+	float: left;
+	width: 98%;
+	height: 200px;
+	border: solid yellowgreen 1px;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	/*背景图片*/
+	background-image: url("/img/img-5.jpg");
+	background-size:100% 100%;
+	 -moz-background-size:100% 100%;
+}
+.one-one{
+	background-image: url("../img/logo.png");
+	background-size:100px 100px;
+	background-repeat: no-repeat;
+	float: left;
+	width: 10%;
+	height: 100px;
+	position: relative;
+	top: 25px;
+	left: 5%;
+}
+
+
+.one-two{
+	float: left;
+	width: 30%;
+	height: 100px;
+	padding-left: 30px;
+	padding-top: 50px;
+	position: relative;
+	
+	
+}
+.one-three{
+	float:right;
+	width: 10%;
+	height: 100px;
+	
+	position: relative;
+	padding-top: 100px;
+	right: 5%;
+}
+
+.two-one ul{
+	float:left ;
+	list-style-type:none ;
+	width: 12%;
+	line-height: 4.5rem;
+	border: solid rosybrown 1px;
+	position: relative;
+	left: 1%;
+	display:block;	
+
+	background: linear-gradient(110deg, #b9c733 40%, rgba(0, 0, 0, 0.1) 40%), radial-gradient(farthest-corner at 0% 0%, #7deb14 60%, #14ebce 60%);
+}
+
+.two-one ul li{
+	text-align: center;
+	height: 4.5rem;
+	background: -moz-linear-gradient(top, red, blue);
+}
+.two-one ul a{
+	font-size: 1.2em;
+	font-family: "宋体";
+}
+.two-two{
+	width: 10%;
+	height: 17%;
+	float: left;
+	position: relative;
+	left: 2%;
+	margin-top: 0.5em;
+	border: solid #01AAED 1px;
+	background-image: url(../img/weixin.png);
+	background-size:100% 100%;
+}
+
+.three-one{
+	float:left ;
+	list-style-type:none ;
+	width: 20%;
+	line-height: 2rem;
+	border: solid rosybrown 1px;
+	position: relative;
+	left: 5%;
+	display:block;
+	font-family: "STHupo";
+	
+	top: 5%;
+}
+.three-two{
+	font-family: "STHupo";
+	float: right;
+	list-style-type:none;
+	position: relative;
+	right: 20%;
+	top: 5%;
+	}
+iframe{
+	position: relative;
+	float: right;
+	right: 1%;
+}
+

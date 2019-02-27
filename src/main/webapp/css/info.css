@@ -1,0 +1,13 @@
+h1{
+	margin: 0px auto;
+	text-align: center;
+	
+}
+ul li{
+	list-style: none;
+	line-height: 30px;
+}
+#info{
+	position: absolute;
+	left: 20%;
+}

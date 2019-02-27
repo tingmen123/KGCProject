@@ -1,0 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	/* width: 1200px; */
+	margin: 0 auto;
+}
+
+a {
+	text-decoration: none;
+	color: #cc6600
+}
+
+.slide {
+	width: 864px;
+	height: 400px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+
+.slide .img-div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3456px;
+}
+
+.slide img {
+	width: 864px;
+	float: left;
+}
+
+.slide-btn {
+	width: 864px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	bottom: 10px;
+	z-index: 11;
+	text-align: center;
+}
+
+.slide-btn a.hover {
+	color: #ccc;
+}

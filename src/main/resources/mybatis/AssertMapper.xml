@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddw.dao.AssertMapper">
+  <resultMap id="BaseResultMap" type="com.ddw.pojo.Assert">
+    <result column="carprice" jdbcType="DOUBLE" property="carprice" />
+    <result column="houseprice" jdbcType="DOUBLE" property="houseprice" />
+    <result column="otherasserts" jdbcType="DOUBLE" property="otherasserts" />
+    <result column="otherdebts" jdbcType="DOUBLE" property="otherdebts" />
+    <result column="uid" jdbcType="CHAR" property="uid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    carprice, houseprice, otherasserts, otherdebts, uid
+  </sql>
+  <select id="selectByExample" parameterType="com.ddw.pojo.AssertExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from assert
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.ddw.pojo.AssertExample">
+    delete from assert
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ddw.pojo.Assert">
+    insert into assert (carprice, houseprice, otherasserts, 
+      otherdebts, uid)
+    values (#{carprice,jdbcType=DOUBLE}, #{houseprice,jdbcType=DOUBLE}, #{otherasserts,jdbcType=DOUBLE}, 
+      #{otherdebts,jdbcType=DOUBLE}, #{uid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ddw.pojo.Assert">
+    insert into assert
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="carprice != null">
+        carprice,
+      </if>
+      <if test="houseprice != null">
+        houseprice,
+      </if>
+      <if test="otherasserts != null">
+        otherasserts,
+      </if>
+      <if test="otherdebts != null">
+        otherdebts,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="carprice != null">
+        #{carprice,jdbcType=DOUBLE},
+      </if>
+      <if test="houseprice != null">
+        #{houseprice,jdbcType=DOUBLE},
+      </if>
+      <if test="otherasserts != null">
+        #{otherasserts,jdbcType=DOUBLE},
+      </if>
+      <if test="otherdebts != null">
+        #{otherdebts,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ddw.pojo.AssertExample" resultType="java.lang.Long">
+    select count(*) from assert
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update assert
+    <set>
+      <if test="record.carprice != null">
+        carprice = #{record.carprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.houseprice != null">
+        houseprice = #{record.houseprice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.otherasserts != null">
+        otherasserts = #{record.otherasserts,jdbcType=DOUBLE},
+      </if>
+      <if test="record.otherdebts != null">
+        otherdebts = #{record.otherdebts,jdbcType=DOUBLE},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update assert
+    set carprice = #{record.carprice,jdbcType=DOUBLE},
+      houseprice = #{record.houseprice,jdbcType=DOUBLE},
+      otherasserts = #{record.otherasserts,jdbcType=DOUBLE},
+      otherdebts = #{record.otherdebts,jdbcType=DOUBLE},
+      uid = #{record.uid,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

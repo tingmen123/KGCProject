@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddw.dao.InterestMapper">
+  <resultMap id="BaseResultMap" type="com.ddw.pojo.Interest">
+    <id column="interestid" jdbcType="INTEGER" property="interestid" />
+    <result column="interestrate" jdbcType="DOUBLE" property="interestrate" />
+    <result column="intodate" jdbcType="TIMESTAMP" property="intodate" />
+    <result column="outdate" jdbcType="TIMESTAMP" property="outdate" />
+    <result column="setterid" jdbcType="CHAR" property="setterid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    interestid, interestrate, intodate, outdate, setterid
+  </sql>
+  <select id="selectByExample" parameterType="com.ddw.pojo.InterestExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from interest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from interest
+    where interestid = #{interestid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from interest
+    where interestid = #{interestid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ddw.pojo.InterestExample">
+    delete from interest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ddw.pojo.Interest">
+    insert into interest (interestid, interestrate, intodate, 
+      outdate, setterid)
+    values (#{interestid,jdbcType=INTEGER}, #{interestrate,jdbcType=DOUBLE}, #{intodate,jdbcType=TIMESTAMP}, 
+      #{outdate,jdbcType=TIMESTAMP}, #{setterid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ddw.pojo.Interest">
+    insert into interest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="interestid != null">
+        interestid,
+      </if>
+      <if test="interestrate != null">
+        interestrate,
+      </if>
+      <if test="intodate != null">
+        intodate,
+      </if>
+      <if test="outdate != null">
+        outdate,
+      </if>
+      <if test="setterid != null">
+        setterid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="interestid != null">
+        #{interestid,jdbcType=INTEGER},
+      </if>
+      <if test="interestrate != null">
+        #{interestrate,jdbcType=DOUBLE},
+      </if>
+      <if test="intodate != null">
+        #{intodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outdate != null">
+        #{outdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setterid != null">
+        #{setterid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ddw.pojo.InterestExample" resultType="java.lang.Long">
+    select count(*) from interest
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update interest
+    <set>
+      <if test="record.interestid != null">
+        interestid = #{record.interestid,jdbcType=INTEGER},
+      </if>
+      <if test="record.interestrate != null">
+        interestrate = #{record.interestrate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.intodate != null">
+        intodate = #{record.intodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.outdate != null">
+        outdate = #{record.outdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.setterid != null">
+        setterid = #{record.setterid,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update interest
+    set interestid = #{record.interestid,jdbcType=INTEGER},
+      interestrate = #{record.interestrate,jdbcType=DOUBLE},
+      intodate = #{record.intodate,jdbcType=TIMESTAMP},
+      outdate = #{record.outdate,jdbcType=TIMESTAMP},
+      setterid = #{record.setterid,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ddw.pojo.Interest">
+    update interest
+    <set>
+      <if test="interestrate != null">
+        interestrate = #{interestrate,jdbcType=DOUBLE},
+      </if>
+      <if test="intodate != null">
+        intodate = #{intodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outdate != null">
+        outdate = #{outdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="setterid != null">
+        setterid = #{setterid,jdbcType=CHAR},
+      </if>
+    </set>
+    where interestid = #{interestid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ddw.pojo.Interest">
+    update interest
+    set interestrate = #{interestrate,jdbcType=DOUBLE},
+      intodate = #{intodate,jdbcType=TIMESTAMP},
+      outdate = #{outdate,jdbcType=TIMESTAMP},
+      setterid = #{setterid,jdbcType=CHAR}
+    where interestid = #{interestid,jdbcType=INTEGER}
+  </update>
+</mapper>
